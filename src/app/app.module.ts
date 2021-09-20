@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {FormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
+import { VowelsComponent } from './vowels/vowels.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VowelsComponent
   ],
   imports: [
     BrowserModule,
