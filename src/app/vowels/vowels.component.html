@@ -1,0 +1,53 @@
+<body class="m-4  mx-5">
+<h1 class="mt-5 text-center fs-1" > {{title}} </h1>
+
+<div class="text-center">
+
+  <div class="input-group mt-5">
+    <span class="input-group-text" id="inputGroup-sizing-default">Please enter a text :</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required [(ngModel)]="this.text">
+    </div>
+
+
+
+  <div class="mt-5">
+    <button class="btn btn-primary" (click)="analyzer()">click me</button>
+  </div>
+
+  <div class="mt-5">
+
+  <mat-slide-toggle
+    [(ngModel)]="checked">
+    online or offline mode</mat-slide-toggle>
+  </div>
+
+<div class="mx-3">
+  <table class="table .table-sm">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Letter</th>
+      <th scope="col">Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of resultMaP | keyvalue ;let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{item.key}}</td>
+      <td>{{item.value}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</div>
+<!--
+<div *ngFor="let item of resultMaP | keyvalue " >
+  Key: <b>{{item.key}}</b> and Value: <b>{{item.value}}</b>
+</div>
+-->
+
+
+
+</body>
