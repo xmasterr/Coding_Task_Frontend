@@ -8,7 +8,8 @@ import {AnalyzerService} from "../analyzer.service";
   templateUrl: './vowels.component.html',
   styleUrls: ['./vowels.component.css']
 })
-export class VowelsComponent implements OnInit {
+
+export class VowelsComponent{
 
   title = 'AngularCodingTask';
   text = '';
@@ -16,26 +17,25 @@ export class VowelsComponent implements OnInit {
   resultMaP = {};
 
 
-  //Dependency Injection
+  //Dependency(HTTPClient, analyzerService) Injection
+
   constructor( private http: HttpClient,
                private analyzerService: AnalyzerService) {}
 
   analyzer() {
-    //online or offline
+    //online
     if (this.checked){
 
       this.http.get<any>('http://localhost:8080/api/analyzer?text='+this.text).subscribe(
-        data =>
-          this.resultMaP = data);
+        //callback function
+        data =>  this.resultMaP = data);
 
+      //offline
     }else {
       let result = this.analyzerService.analyze(this.text);
       this.resultMaP = result;
     }
 
-  }
-
-  ngOnInit(): void {
   }
 
 }

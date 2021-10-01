@@ -28,19 +28,26 @@ export class AnalyzerService {
       if (mode == 'consonants' && this.isConsonant(letter)) {
         if(map.has(letter)){
           let value = map.get(letter) as number;
-          map.set(letter, value+1);
+          map.set(letter.toLocaleUpperCase(), value+1);
         }else {
-          map.set(letter, 1);
+          map.set(letter.toLocaleUpperCase(), 1);
         }
       }
 
-      if (mode == 'vowels' && this.isVowel(letter)) { //
+      if (mode == 'vowels' && this.isVowel(letter)) {
         if(map.has(letter)){
           let value = map.get(letter) as number;
-          map.set(letter, value+1);
+          map.set(letter.toLocaleUpperCase(), value+1);
         }else {
-          map.set(letter, 1);
+          map.set(letter.toLocaleUpperCase(), 1);
         }
+        let vowels = ['A', 'E' , 'I' , 'O' , 'U'];
+        for (let i = 0; i < vowels.length; i++) {
+          if (!map.has(vowels[i])){
+            map.set(vowels[i] , 0);
+          }
+        }
+
       }
     }
     return map;
